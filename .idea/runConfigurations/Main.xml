@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="org.eu.hanana.reimu.lib.jtinymidi.Main" />
+    <module name="owg.jtinymidi.main" />
+    <option name="PROGRAM_PARAMETERS" value="&quot;D:\8bit.sf2&quot; &quot;D:\proj\touhou-midi-collection\1 - Shooter Games\1 - Highly Responsive to Prayers\2. Eternal Shrine Maiden (unknown).mid&quot;" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="org.eu.hanana.reimu.lib.jtinymidi.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
