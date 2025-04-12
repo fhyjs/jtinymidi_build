@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id 'maven-publish'  // 用于发布
 }
 
 group = 'org.eu.hanana.reimu.lib.owg.jtinymidi'
-version = '1.0-SNAPSHOT'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -13,7 +14,43 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
-
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources' // 分类器设置为 'sources'
+    from sourceSets.main.allSource // 包含所有源代码
+}
 test {
     useJUnitPlatform()
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java  // 发布 Java 项目
+            artifact sourcesJar // 添加源代码 JAR
+            groupId = project.group  // 修改为您的组织 ID
+            artifactId = 'jtinymidi'  // 修改为您的项目名称
+            version = "1.0.0"  // 修改为您的版本号
+
+            // 这里可以添加其他信息，例如 POM 文件中的描述信息
+            pom {
+                name = 'jtinymidi'
+                description = 'tinymidi java bindings'
+                //url = 'https://your.project.url'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://opensource.org/license/MIT'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url 'https://maven.hanana2.link:2053/releases'
+            credentials {
+                username lcUsername
+                password lcPassword
+            }
+        }
+    }
 }
